@@ -267,3 +267,15 @@ dialog::backdrop{background:rgba(16,15,31,.55);backdrop-filter:blur(3px)}
 }
 @media(max-width:380px){nav button{font-size:10px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Secret */
+.secret-hint{font-size:12px;color:var(--t-ink-2);opacity:.75;margin-top:18px}
+.secret-dialog{max-width:min(420px,92vw);padding:20px;text-align:center}
+.secret-dialog h2{margin:0 0 12px;font-size:20px}
+.secret-dialog img{width:100%;height:auto;border-radius:16px;display:block}
+.secret-dialog p{color:var(--t-ink-2);margin:12px 0 4px}
+.secret-dialog .primary{width:100%}
+.brand-mark.secret-tap{animation:secretTap .25s ease}
+.brand-mark.secret-pop{animation:secretPop .6s ease}
+@keyframes secretTap{50%{transform:scale(.85) rotate(-12deg)}}
+@keyframes secretPop{30%{transform:scale(1.35) rotate(20deg)}60%{transform:scale(.9) rotate(-10deg)}}

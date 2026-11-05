@@ -10,3 +10,16 @@
   document.addEventListener('click',e=>{if(!nav.contains(e.target))close();setTimeout(syncMore,0)});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 })();
+
+// Secret : toucher 5 fois la croix du logo (ou taper « secret » dans la recherche).
+(()=>{
+  const dlg=document.getElementById('secret-dialog'),mark=document.querySelector('.brand-mark');
+  if(!dlg||!mark)return;
+  const show=()=>{if(!dlg.open)dlg.showModal();mark.classList.add('secret-pop');setTimeout(()=>mark.classList.remove('secret-pop'),600)};
+  let taps=0,timer;
+  mark.style.cursor='pointer';
+  mark.addEventListener('click',()=>{taps++;clearTimeout(timer);mark.classList.remove('secret-tap');void mark.offsetWidth;mark.classList.add('secret-tap');if(taps>=5){taps=0;show()}timer=setTimeout(()=>taps=0,2500)});
+  document.getElementById('secret-close')?.addEventListener('click',()=>dlg.close());
+  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+  document.getElementById('site-search')?.addEventListener('input',e=>{if(e.target.value.trim().toLowerCase()==='secret')show()});
+})();
